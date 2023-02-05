@@ -1,0 +1,17 @@
+POST http://localhost:{{$dotenv ORDER_PORT}}/orders HTTP/1.1
+content-type: application/json
+
+{
+    "id": "{{$guid}}"
+}
+
+###
+
+POST http://localhost:{{$dotenv PAYMENT_PORT}}/payments HTTP/1.1
+content-type: application/json
+Authorization: Bearer <token here>
+
+{
+    "id": "{{$guid}}",
+    "correlationId": "{{$guid}}"
+}
